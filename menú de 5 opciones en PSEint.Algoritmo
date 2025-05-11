@@ -1,0 +1,122 @@
+Algoritmo MenuPrincipal
+Definir opcion Como Entero
+
+Repetir
+	Escribir "----- Menú de Ejercicios -----"
+	Escribir "1. Calcular precio final de un traje"
+	Escribir "2. Calcular costo de viaje en autobús"
+	Escribir "3. Aumentar límite de crédito de tarjeta"
+	Escribir "4. Calcular costo de consulta médica"
+	Escribir "5. Salir"
+	Escribir "Seleccione una opción (1-5): "
+	Leer opcion
+	
+	Segun opcion Hacer
+		1:
+			Escribir Calcular_Precio_Traje
+		2:
+			Escribir Calcular_Costo_Viaje
+		3:
+			Escribir Aumentar_Limite_Credito
+		4:
+			Escribir Calcular_Costo_Consulta
+		5:
+			Escribir "Saliendo del sistema..."
+		De Otro Modo:
+			Escribir "Opción no válida. Intente de nuevo."
+	Fin Segun
+Hasta Que opcion = 5
+Fin Proceso
+
+Proceso Calcular_Precio_Traje
+    Definir precioOriginal, precioFinal Como Real
+    Escribir "Ingrese el precio del traje: "
+    Leer precioOriginal
+    Si precioOriginal > 2500 Entonces
+        precioFinal = precioOriginal * 0.85  // Aplicar 15% de descuento
+    Sino
+        precioFinal = precioOriginal * 0.92  // Aplicar 8% de descuento
+    Fin Si
+    Escribir "El precio final a pagar por el traje es: ", precioFinal
+Fin Proceso
+
+Proceso Calcular_Costo_Viaje
+    Definir tipoAutobus Como Caracter
+    Definir numPersonas, costoPorPersona, costoTotal Como Real
+    Escribir "Ingrese el tipo de autobús (A, B o C): "
+    Leer tipoAutobus
+    Escribir "Ingrese el número de personas: "
+    Leer numPersonas
+	
+    Segun tipoAutobus Hacer
+		
+			"Definir costo por persona según el tipo de autobús"
+			"Autobús A: $2.0, B: $2.5, C: $3.0"
+        A:
+            costoPorPersona = 2.0
+        B:
+            costoPorPersona = 2.5
+        C:
+            costoPorPersona = 3.0
+        De Otro Modo:
+            Escribir "Tipo de autobús no válido."
+		
+    Fin Segun
+	
+    Si numPersonas < 20 Entonces
+        numPersonas = 20  // Cobro mínimo
+    Fin Si
+	
+    costoTotal = numPersonas * costoPorPersona
+    Escribir "El costo total del viaje es: ", costoTotal
+    Escribir "El costo por persona es: ", costoTotal / numPersonas
+Fin Proceso
+
+Proceso Aumentar_Limite_Credito
+    Definir tipoTarjeta Como Entero
+    Definir limiteActual, nuevoLimite Como Real
+    Escribir "Ingrese el tipo de tarjeta (1, 2, 3 o cualquier otro): "
+    Leer tipoTarjeta
+    Escribir "Ingrese el límite actual de crédito: "
+    Leer limiteActual
+	
+    Segun tipoTarjeta Hacer
+        1:
+            nuevoLimite = limiteActual * 1.25  // Aumento del 25%
+        2:
+            nuevoLimite = limiteActual * 1.35  // Aumento del 35%
+        3:
+            nuevoLimite = limiteActual * 1.40  // Aumento del 40%
+        De Otro Modo:
+            nuevoLimite = limiteActual * 1.50  // Aumento del 50%
+    Fin Segun
+	
+    Escribir "El nuevo límite de crédito es: ", nuevoLimite
+Fin Proceso
+
+Proceso CalcularCostoConsulta
+    Definir numeroCita Como Entero
+    Definir costoConsulta Como Real
+    Definir totalPagado Como Real
+    totalPagado = 0
+	
+    Escribir "Ingrese el número de la cita: "
+    Leer numeroCita
+	
+    Si numeroCita <= 3 Entonces
+        costoConsulta = 200.0
+    Sino
+        Si numeroCita <= 5 Entonces
+            costoConsulta = 150.0
+        Sino
+            Si numeroCita <= 8 Entonces
+                costoConsulta = 100.0
+            Sino
+                costoConsulta = 50.0
+            Fin Si
+        Fin Si
+    Fin Si
+	
+    totalPagado = costoConsulta * numero
+	
+FinAlgoritmo
